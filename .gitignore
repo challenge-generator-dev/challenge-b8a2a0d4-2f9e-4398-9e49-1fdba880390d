@@ -1,0 +1,163 @@
+# ==============================================================================
+# Archivo .gitignore para proyectos de Infraestructura como Código con Terraform
+# Ignora archivos temporales, estados y secretos
+# ==============================================================================
+
+# Archivos de estado de Terraform
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+terraform.tfstate
+terraform.tfstate.*
+
+# Directorio de plugins y proveedores de Terraform
+.terraform/
+.terraform.lock.hcl
+.terraform.d/
+
+# Archivos de logs
+*.log
+logs/
+
+# Archivos de configuración local (contienen valores específicos del entorno)
+# NOTA: Los archivos .tfvars con valores reales NO deben estar en el repositorio
+# Usa terraform.tfvars.example como plantilla
+*.tfvars
+!examples/*.tfvars
+!environments/*/terraform.tfvars
+
+# Archivos de backup
+*.bak
+*~
+*.swp
+*.swo
+*~
+
+# Archivos de IDE y editor
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+Thumbs.db
+
+# Archivos temporales del sistema
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Certificados y claves privadas (nunca subir a repositorio)
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Archivos de credentials de AWS
+.aws/
+~/.aws/credentials
+~/.aws/config
+
+# Archivos de Terraform Cloud / Enterprise
+.terraformrc
+terraform.rc
+
+# Outputs de Terraform que pueden contener información sensible
+terraform.output
+*.output
+
+# Archivos de lock de dependencias (opcional, puede ser útil versionarlos)
+# Descomenta si deseas ignorar los archivos de lock
+# *-lock.json
+# *-lock.tf
+
+# Archivos de documentación generados
+site/
+
+# Kubeconfig y configuraciones de Kubernetes
+kubeconfig*
+*.kubeconfig
+
+# Archivos de secretos de aplicaciones
+secrets.yaml
+secrets.yml
+secrets.json
+*.secret.*
+
+# Archivos de variables de entorno
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+*.zip
+*.tar.gz
+*.tar
+dist/
+build/
+
+# Archivos de auditoría y compliance
+audit/
+compliance/
+
+# Terraform plan outputs
+*.plan
+*.plan.backup
+
+# Module caches
+.module-cache/
+
+# Credentials de cloud providers
+credentials.json
+credentials.yml
+credentials.yaml
+service-account.json
+
+# Archivos de estado remoto (si se usa estado local temporalmente)
+# Estos no deberían subirse nunca
+remote-state/
+
+# Terraform workspace state (para workspaces locales)
+.terraform.tfstate.lock.info
+
+# Archivos de validación
+validation.log
+
+# Override files (permitidos pero no subirlos por defecto)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Archivos de testing que generan outputs
+.terratest/
+test-results/
+
+# Dependencias externas
+vendor/
+
+# Archivos de configuración de CI/CD que contienen secretos
+# Si tu pipeline usa secretos, asegúrate de que estén en variables de entorno
+# no hardcodeados en archivos de configuración
+.github/secrets/
+.azure/secrets/
+.gitlab/secrets/
+
+# Python virtual environments (si aplica para scripts)
+venv/
+env/
+.venv/
+
+# Node modules (si aplica para scripts)
+node_modules/
+
+# Scripts con credenciales hardcodeadas (prohibido)
+# Cualquier script que contenga passwords o API keys debe ser ignorado
+*credentials*
+*secret*
+*password*
